@@ -15,30 +15,44 @@
 <body>
 <div class="container">
     <h1>Trivia Game</h1>
-    <div class="row">
-        <div class="col-sm-12 mb-3">
-            <div class="card">
-                <p class="text-center" id="question">This is the question...</p>
+    <div class="card p-3">
+        <div class="row">
+            <div class="col-sm-12 mb-3">
+                <div class="card">
+                    <p class="text-center" id="question">This is the question...</p>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-2">
-            <div class="card" id="choice1">answer1</div>
+        <div class="row">
+            <div class="col-sm-2">
+                <div class="card" id="choice1">answer1</div>
+            </div>
+            <div class="col-sm-2">
+                <div class="card" id="choice2">answer2</div>
+            </div>
+            <div class="col-sm-2">
+                <div class="card" id="choice3">answer3</div>
+            </div>
+            <div class="col-sm-2">
+                <div class="card" id="choice4">answer4</div>
+            </div>
+            <div class="col-sm-2">
+                <div class="card bg-light" id="userGuess">blank</div>
+            </div>
+            <div class="col-sm-2">
+                <div class="card" id="timer">Countdown</div>
+            </div>
         </div>
-        <div class="col-sm-2">
-            <div class="card" id="choice2">answer2</div>
+        <div class="row">
+            <div class="col-sm-2">
+                <div class="card"><button class="btn bg-success" id="submit">Submit</button></div>
+            </div>
         </div>
-        <div class="col-sm-2">
-            <div class="card" id="choice3">answer3</div>
+        <div class="row">
+            <div class="col-sm-2">
+                <div class="card"><button class="btn bg-success" id="next">Next Question</button></div>
+            </div>
         </div>
-        <div class="col-sm-2">
-            <div class="card" id="choice4">answer4</div>
-        </div>
-        <div class="col-sm-4">
-            <div class="card" id="correctAnswer">Correct Answer</div>
-        </div>
-
     </div>
 </div>
     <script src="assets/javascript/trivia.js"></script>
