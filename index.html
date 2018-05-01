@@ -9,48 +9,85 @@
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <style>
+        .card { border-radius: 0px;}
+    </style>
     
     
 </head>
 <body>
+
+<nav class="text-center">
+    <h1>NFL TRIVIA GAME</h1>
+</nav>
+
 <div class="container">
-    <h1>Trivia Game</h1>
-    <div class="card p-3">
+
+    <div class="card mt-3 mb-3">
         <div class="row">
-            <div class="col-sm-12 mb-3">
-                <div class="card">
-                    <p class="text-center" id="question">This is the question...</p>
+            <div class="col-sm-12">
+                <div class="card p-3 text-center">
+                    <h1 class = "text-center">NFL Trivia Game</h1>
+                    <p>For each question, you have 30 seconds to select 1 of the four possible answers and click submit.</p>
+                    <p>If you fail to choose an answer in the given time, you will get the answer wrong.</p>
+                    <p>If you choose the incorrect answer, but fail to click submit before the time runs out, it will count as a wrong answer.</p>
+                    <p>If you choose the correct answer, but fail to click submit before the time runs out, it will count as the correct answer.</p>
+                    <p>After you have answered all 15 questions, you will be shown your total score.</p>
+                    <button class="bg-success text-white p-3" id="startGame">Start The Quiz</button>
                 </div>
             </div>
         </div>
+    </div>
+
+    <h4 class="bg-success bg-dark text-white text-center p-2 mt- 3 mb-0" id="timer" >30 Seconds Left</h4>
+    <div class="card p-3 bg-da">
         <div class="row">
-            <div class="col-sm-2">
-                <div class="card" id="choice1">answer1</div>
-            </div>
-            <div class="col-sm-2">
-                <div class="card" id="choice2">answer2</div>
-            </div>
-            <div class="col-sm-2">
-                <div class="card" id="choice3">answer3</div>
-            </div>
-            <div class="col-sm-2">
-                <div class="card" id="choice4">answer4</div>
-            </div>
-            <div class="col-sm-2">
-                <div class="card bg-light" id="userGuess">blank</div>
-            </div>
-            <div class="col-sm-2">
-                <div class="card" id="timer">Countdown</div>
+            <div class="col-sm-12 mb-0 p-5">
+                
+                    <h2 class="text-center text-secondary" id="question">This is the question...</h2>
+                
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-2">
-                <div class="card"><button class="btn bg-success" id="submit">Submit</button></div>
+            <div class="col-sm-6">
+                <div class="card text-center p-3 mt-3" id="choice1">answer1</div>
+            </div>
+            <div class="col-sm-6">
+                <div class="card text-center p-3 mt-3" id="choice2">answer2</div>
+            </div>
+            <div class="col-sm-6">
+                <div class="card text-center p-3 mt-3 " id="choice3">answer3</div>
+            </div>
+            <div class="col-sm-6">
+                <div class="card text-center p-3 mt-3" id="choice4">answer4</div>
+            </div>
+            <div class="col-sm-12">
+                <div class="card bg-light mt-3  text-center" id="funFact">blank</div>
+            </div>
+        </div>
+        <div class="row mt-3" id="submitRow">
+            <div class="col-sm-12">
+                <div class="card"><button class="btn bg-success p-3" id="submit">Submit</button></div>
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-2">
-                <div class="card"><button class="btn bg-success" id="next">Next Question</button></div>
+            <div class="col-sm-12" id="nextQuestionRow">
+                <div class="card"><button class="btn bg-success p-3" id="nextQuestion">Next Question</button></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card mt-3 mb-3">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card p-3 text-center">
+                    <h1 class = "text-center">Your Score:</h1>
+                    <h2 id="gameScoreAnswers">12/15</h2>
+                    <h2 id="gameScorePoints"> 3000!</h2>
+
+                    <button class="bg-success text-white p-3" id="tryAgainBtn">Try Again</button>
+                </div>
             </div>
         </div>
     </div>

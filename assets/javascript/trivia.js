@@ -1,80 +1,128 @@
-
-
-//trivia questions
+//trivia questions, possible answers, correct answers, and fun facts
 var q1 = {question: "How many years after retiring is a player eligible for the hall of fame?",
     possAnswer1:"3",
     possAnswer2:"5",
     possAnswer3:"6",
     possAnswer4:"10",
-    correctAnswer:"5"
+    correctAnswer:"5",
+    funFact:"After retirement, players must wait 5 years before they are eligible to be voted into the NFL Hall of Fame"
     };
 var q2 = {question: "How many teams are in the nfl?",
     possAnswer1:"28",
     possAnswer2:"30",
     possAnswer3:"32",
     possAnswer4:"36",
-    correctAnswer:"32"
+    correctAnswer:"32",
+    funFact: "There are currently 32 teams in the NFL."
     };
 var q3 = {question: "Which NFL team has the most Super Bowl Wins?",
     possAnswer1:"The New England Patriots",
     possAnswer2:"The Pittsburg Steelers",
     possAnswer3:"The Dallas Cowboys",
     possAnswer4:"The Miami Dolphins",
-    correctAnswer:"The Pittsburg Steelers"
+    correctAnswer:"The Pittsburg Steelers",
+    funFact: "The Pittsburg Steelers have won 8 Super Bowl Titles."
     };
 var q4 = {question: "Which state has the most Super Bowl appearances?",
     possAnswer1:"NY",
     possAnswer2:"Cal",
     possAnswer3:"Florida",
     possAnswer4:"Iowa",
-    correctAnswer:"Iowa"};
+    correctAnswer:"Iowa",
+    funFact:"This is totally not true."};
 var q5 = {question: "What year were players first required to wear helmets?",
     possAnswer1:"1935",
     possAnswer2:"1943",
     possAnswer3:"1962",
     possAnswer4:"1977",
-    correctAnswer:"1943"};
-var q6 = {question: "Which NFL team hold the game record for least completed pass during a game?",
+    correctAnswer:"1943",
+    funFact:"The NFL has been requiring all players to wear helmets since 1943."};
+var q6 = {question: "In modern NHL history, which NFL team hold the game record for least completed pass during a game?",
     possAnswer1:"The Cleveland Browns",
     possAnswer2:"The Buffalo Bills",
     possAnswer3:"The Seattle Seahawks",
     possAnswer4:"The Detroit Lions",
-    correctAnswer:"The Buffalo Bills"};
+    correctAnswer:"The Buffalo Bills",
+    funFact:"On September 29th, 1974, the Buffalo Bills completed 0 passes against the New York Jets.  The Jets only completed 2 passes."};
 var q7 = {question: "Which player holds the record for most sacks in a single season?",
     possAnswer1:"JJ Watt",
     possAnswer2:"Mark Gastineau",
     possAnswer3:"Michael Strahan",
     possAnswer4:"Lawrence Taylor",
-    correctAnswer:"Michael Strahan"};
-var q8 = {question: "Which two teams played in the lowest scoring overtime tie?",
+    correctAnswer:"Michael Strahan",
+    funFact: "In the 2001 season, Michael Strahan recorded 22.5 sacks."    };
+var q8 = {question: "Which two teams played in the lowest scoring overtime tie, with a final score of 6-6?",
     possAnswer1:"The Seattle Seahawks and the Arizona Cardinals",
     possAnswer2:"The Buffalo Bills and the NY Jets",
     possAnswer3:"The Cleveland Browns and the Miami Dolphins",
     possAnswer4:"The Philadelphia Eagles and the St Louis Rams",
-    correctAnswer:"The Seattle Seahawks and the Arizona Cardinals"};
+    correctAnswer:"The Seattle Seahawks and the Arizona Cardinals",
+    funFact:"On October 23rd, 2016, the Seattle Seahawks and the Arizona Cardinals game ended in an overtime 6-6 tie.  Both teams potentially game winning short field goals in overtime."};
 var q9 = {question: "Who is the only quarterback in NFL history to have a career passer rating over 100 (minimum 1500 passes thrown)?",
     possAnswer1:"Aaron Rogers",
     possAnswer2:"Tom Brady",
     possAnswer3:"Steve Young",
     possAnswer4:"Peyton Manning",
-    correctAnswer:"Aaron Rogers"
-};
+    correctAnswer:"Aaron Rogers",
+    funFact: "Aaron Rogers has a 103.8 career passer rating.  Russell Wilson is number 2 on the list with a career passer rating of 98.8."};
+var q10 = {question: "In 1990, Derrick Thomas set the single game current NFL record for which statistic?",
+    possAnswer1:"Most quarterback sacks",
+    possAnswer2:"Longest punt return for a touchdown",
+    possAnswer3:"Most penalty yards by a player",
+    possAnswer4:"Most interceptions",
+    correctAnswer:"Most quarterback sacks",
+    funFact: "In a 1990 game against the Seattle Seahawks, Thomas sacked quarterback Dave Krieg seven times. The Seahawks somehow still won the game with a score of 17-16."};
+var q11 = {question: "Which Running Back holds the single-season rushing yards?",
+    possAnswer1:"Adrian Peterson",
+    possAnswer2:"OJ Simpson",
+    possAnswer3:"Barry Sanders",
+    possAnswer4:"Eric Dickerson",
+    correctAnswer:"Eric Dickerson",
+    funFact: "In the 1984 season, Eric Dickerson rushed for 2,105 yards.  Adrian Peterson came within 10 yards of that record in 2012."};
+var q12 = {question: "Who was the oldest coach to win a Super Bowl?",
+    possAnswer1:"Vince Lombardi",
+    possAnswer2:"Don Shula",
+    possAnswer3:"Tom Coughlin",
+    possAnswer4:"Bill Belichick",
+    correctAnswer:"Tom Coughlin",
+    funFact: "In 2012, at age 65, Tom Coughlin's NY Giants defeated Bill Belichick's New England Patriots."};
+var q13 = {question: "Which NFL kicker holds the record for longest successful field goal",
+    possAnswer1:"Sebastion Janikowski",
+    possAnswer2:"David Akers",
+    possAnswer3:"Mat Prater",
+    possAnswer4:"Tom Demsey",
+    correctAnswer:"Mat Prater",
+    funFact: "On December 8, 2013, Mat Prater kicked a 64 yard field goal in Denver's Mile High Stadium."};
+var q14 = {question: "Do you like football",
+    possAnswer1:"Yes",
+    possAnswer2:"No",
+    possAnswer3:"Hell Yes",
+    possAnswer4:"Hell No",
+    correctAnswer:"Yes",
+    funFact: "You like football."};
+var q15 = {question: "Which former NFL quarterback holds the record for most career fumbles?",
+    possAnswer1:"Dave Krieg",
+    possAnswer2:"Warren Moon",
+    possAnswer3:"Steve Young",
+    possAnswer4:"Brett Favre",
+    correctAnswer:"Warren Moon",
+    funFact: "During his 16 year NFL career, Warren Moon fumbled 161 times."};
 
 //global variables
-var userGuess=[];                   //user guess
-var correctGuesses=0;               //number of correct guesses
-var wrongGuesses=0;                 //number of incorrect Guesses
-var guessTime=30;                //time per question
-var prevQuestions=[];               //array of previously answered questions
-var isRunning=true;
-var timer;
+var userGuess=[];               //user guess
+var correctGuesses=0;           //number of correct guesses
+var wrongGuesses=0;             //number of incorrect Guesses
+var guessTime=30;               //time per question
+var prevQuestions=[];           //array of previously answered questions
+var isRunning=true;             //define isRunning = true
+var timer;                      //define timer (for setinterval)
 
-var questionsArray =[q1, q2, q3, q4, q5, q6, q7, q8];
+var questionsArray =[q1, q2, q3, q4, q5, q6, q7, q8, q9, q10, q11, q12, q11, q14, q15];
 var randomNumber=null;
 var numberOrder=[];
+
+
 //determines a nonrepeating number
-
-
 function questionOrder(){
     var usedNums=[]
     for (i=0; i<questionsArray.length; i++){
@@ -87,27 +135,65 @@ function questionOrder(){
 }
 questionOrder();
 
-userQuestion();
+function endGame(){
+    console.log("sorry");
+}
 
-function userQuestion(){
+//Game Main Function
+function runGame(){
+    
+    $("#submitRow").hide();                 //hide submit button
+    $("#nextQuestionRow").hide();           //hide nextQuestion button
+    $("#funFact").hide();                   //hide funFact Display
 
     //function variables
-    i = numberOrder[0];
-    isRunning=true;
-    guessTime=30;
-    userGuess=[];
-
-    //start timer
-    timer = setInterval(function(){
-        guessTime--;
-        $("#timer").text(guessTime + " Yay " );
-        console.log(guessTime);
-        }, 1000);
+    i = numberOrder[0];                     //i = 
+    isRunning=true;                         //reset isRunning to True
+    guessTime=30;                           //reset guess time to 30 seconds
+    userGuess=[];                           //reset user's guess
     
+    if (questionsArray[i] == undefined){    //if there are no questions remaining
+        alert("hello");                     //run endgame function
+    }
+
+    function buttonColor(){
+        $("#choice1").removeClass("bg-secondary text-white");       //remove button classes
+        $("#choice2").removeClass("bg-secondary text-white");       //remove button classes
+        $("#choice3").removeClass("bg-secondary text-white");       //remove button classes
+        $("#choice4").removeClass("bg-secondary text-white");       //remove button classes
+    }
+    buttonColor();                                      
+    
+
+    
+    
+    //start Interval Timer
+    timer = setInterval(function(){                                     //set interval timer for 1000ms
+        guessTime--;                                                    //countdown from 30 seconds
+        $("#timer").text(guessTime + " Seconds Remaining ");            //display countdown timer
+        console.log(guessTime);                                         
+        if (guessTime <= 0){                                            //if you run out of time
+            clearInterval(timer);                                       //clear the interval timer
+            $("#timer").text("Sorry, you ran out of Time!");            //display "Out of Time"
+            if (userGuess != []){                                       
+                numberOrder.splice(0, 1);
+                wrongGuesses++;
+                isRunning=false;
+                console.log("false. wrong guesses: " + wrongGuesses);
+                endGame();}
+            else{
+                numberOrder.splice(0, 1);
+                wrongGuesses++;
+                isRunning=false;
+                console.log("false. wrong guesses: " + wrongGuesses);
+                endGame();
+            }
+        };
+        }, 1000);
 
     //display questions and answer choices on screen
     $("#question").text(questionsArray[i].question);
-    $("#choice1").text(questionsArray[i].possAnswer1);
+    $("#choice1").html(questionsArray[i].possAnswer1);
     $("#choice2").text(questionsArray[i].possAnswer2);
     $("#choice3").text(questionsArray[i].possAnswer3);
     $("#choice4").text(questionsArray[i].possAnswer4);
@@ -115,55 +201,75 @@ function userQuestion(){
     
     //Click Handlers splice selected answer to userGuess[]
     $("#choice1").click (function(){
+        $("#submitRow").show();
+        buttonColor();
+        $(this).addClass("bg-secondary text-white");
         userGuess.splice(0, 1, questionsArray[i].possAnswer1);
-        $("#userGuess").text("You Guessed: " + userGuess);
     });
     $("#choice2").click (function(){
+        $("#submitRow").show();
+        buttonColor();
+        $(this).addClass("bg-secondary text-white");
         userGuess.splice(0, 1, questionsArray[i].possAnswer2);
-        $("#userGuess").text("You Guessed: " + userGuess);
     });
     $("#choice3").click (function(){
+        $("#submitRow").show();
+        buttonColor();
+        $(this).addClass("bg-secondary text-white");
         userGuess.splice(0, 1, questionsArray[i].possAnswer3);
-        $("#userGuess").text("You Guessed: " + userGuess);
     }); 
     $("#choice4").click (function(){
+        $("#submitRow").show();
+        buttonColor();
+        $(this).addClass("bg-secondary text-white");
         userGuess.splice(0, 1, questionsArray[i].possAnswer4);
-        $("#userGuess").text("You Guessed: " + userGuess);
     });
     
-    
+    //Submit Answer Button
     $("#submit").click(function(){
         if (isRunning == true){
+            $("#submitRow").hide();
+            $("#nextQuestionRow").show();
             clearInterval(timer);
             if (userGuess == questionsArray[i].correctAnswer){
+                $("#funFact").show();
+                $("#funFact").text(questionsArray[i].funFact);
                 numberOrder.splice(0, 1);
                 isRunning=false;
                 correctGuesses++;
                 console.log("You are correct. CorrectGuesses: " + correctGuesses);
+                endGame();
             }
             else if (userGuess != []){
                 numberOrder.splice(0, 1);
                 wrongGuesses++;
                 isRunning=false;
                 console.log("false. wrong guesses: " + wrongGuesses);
+                endGame();
             }
             else{
                 numberOrder.splice(0, 1);
                 wrongGuesses++;
                 isRunning=false;
                 console.log("false. wrong guesses: " + wrongGuesses);
+                endGame();
             }
         }
     });
 
-        $("#next").click(function(){
-            if(isRunning == false){
-                userQuestion();
-            }
-            
-        });
+    //next Question Button
+    $("#nextQuestion").click(function(){
+        if(isRunning == false && questionsArray[i] != undefined){
+            $("#submitRow").hide();
+            $("#funFact").hide();
+            runGame();
+        }   
+    });
+    $("#results").click(function(){
+        if(isRunning == false && questionsArray[i] == undefined){
+            alert("Correct answers= " + correctGuesses + " wrong Guesses= " + wrongGuesses);
+        }   
+    });
 
 }
-
-
-
+runGame();
