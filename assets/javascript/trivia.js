@@ -106,170 +106,236 @@ var q15 = {question: "Which former NFL quarterback holds the record for most car
     possAnswer3:"Steve Young",
     possAnswer4:"Brett Favre",
     correctAnswer:"Warren Moon",
-    funFact: "During his 16 year NFL career, Warren Moon fumbled 161 times."};
+    funFact: "During his 16 year NFL career, Warren Moon fumbled 161 times."
+};
 
 //global variables
-var userGuess=[];               //user guess
-var correctGuesses=0;           //number of correct guesses
-var wrongGuesses=0;             //number of incorrect Guesses
-var guessTime=30;               //time per question
-var prevQuestions=[];           //array of previously answered questions
-var isRunning=true;             //define isRunning = true
-var timer;                      //define timer (for setinterval)
 
-var questionsArray =[q1, q2, q3, q4, q5, q6, q7, q8, q9, q10, q11, q12, q11, q14, q15];
-var randomNumber=null;
-var numberOrder=[];
+var questionsArray =                                                            //create an array of all the questions obects
+[q1, q2, q3, q4, q5, q6, q7, q8, q9, q10, q11, q12, q13, q14, q15];             //
+var numberOrder=[];                                                             //The order of indexes of questionsArray that the questions will appear
+var userGuess=[];                                                               //user guess
+var correctGuesses=0;                                                           //number of correct guesses
+var wrongGuesses=0;                                                             //number of incorrect Guesses
+var guessTime=30;                                                               //time per question
+// var prevQuestions=[];                                                           //array of previously answered questions
+var isRunning=true;                                                             //define isRunning = true
+var timer;                                                                      //define timer (for setinterval)
+var score=0;                                                                    //Create a userScore
 
+//global functions
 
 //determines a nonrepeating number
 function questionOrder(){
-    var usedNums=[]
-    for (i=0; i<questionsArray.length; i++){
-        usedNums.push(i);}
-    for (j=0; j<questionsArray.length; j++){
-        randomNumber = usedNums[Math.floor(Math.random() * usedNums.length)]
-        usedNums.splice((usedNums.indexOf(randomNumber)),1 );
-        numberOrder.push(randomNumber);
+    var usedNums=[]                                                             //create an array to hold possible numbers
+    var randomNumber=null;
+    for (i=0; i<questionsArray.length; i++){                                    //for how long the questionsarray is,
+        usedNums.push(i);}                                                      //push a number into usedNums array
+    
+    for (j=0; j<questionsArray.length; j++){                                    //for how long questionsArray is,
+        randomNumber = usedNums[Math.floor(Math.random() * usedNums.length)]    //generate a random number from between 0 and usedNums.length
+        usedNums.splice((usedNums.indexOf(randomNumber)),1 );                   //remove that number from usedNums
+        numberOrder.push(randomNumber);                                         //push that number to numberOrder
     }
 }
-questionOrder();
-
-function endGame(){
-    console.log("sorry");
+function buttonColor(){
+    $("#choice1").removeClass("bg-secondary text-white");       //remove button classes
+    $("#choice2").removeClass("bg-secondary text-white");       //remove button classes
+    $("#choice3").removeClass("bg-secondary text-white");       //remove button classes
+    $("#choice4").removeClass("bg-secondary text-white");       //remove button classes
 }
-
 //Game Main Function
 function runGame(){
-    
-    $("#submitRow").hide();                 //hide submit button
-    $("#nextQuestionRow").hide();           //hide nextQuestion button
-    $("#funFact").hide();                   //hide funFact Display
 
-    //function variables
-    i = numberOrder[0];                     //i = 
-    isRunning=true;                         //reset isRunning to True
-    guessTime=30;                           //reset guess time to 30 seconds
-    userGuess=[];                           //reset user's guess
+    //display changes
+    $("#submitRow").hide();                                             //hide submit button
+    $("#nextQuestionRow").hide();                                       //hide nextQuestion button
+    $("#funFact").hide();                                               //hide funFact Display
+    buttonColor();                                                      //Remove Button Selector Classes
     
-    if (questionsArray[i] == undefined){    //if there are no questions remaining
-        alert("hello");                     //run endgame function
-    }
+    //reset variables
+    i = numberOrder[0];                                                 //i = 0
+    isRunning=true;                                                     //reset isRunning to True
+    guessTime=30;                                                       //reset guess time to 30 seconds
+    userGuess=[];                                                       //reset user's guess
+    
+    //Interval Timer
 
-    function buttonColor(){
-        $("#choice1").removeClass("bg-secondary text-white");       //remove button classes
-        $("#choice2").removeClass("bg-secondary text-white");       //remove button classes
-        $("#choice3").removeClass("bg-secondary text-white");       //remove button classes
-        $("#choice4").removeClass("bg-secondary text-white");       //remove button classes
-    }
-    buttonColor();                                      
+    //If not all questions have been answered
+    if (numberOrder.length >0){
+        timer = setInterval(function(){                                     //set interval timer for 1000ms
+            guessTime--;                                                    //countdown from 30 seconds
+            $("#timer").text(guessTime + " Seconds Remaining ");            //display countdown timer
+            console.log(guessTime);                                         
+            
+            //if you run out of time
+            if (guessTime <= 0){                                            //if you run out of time
+                clearInterval(timer);                                       //clear the interval timer
+                $("#timer").text("Sorry, you ran out of Time!");            //display "Out of Time"
+                score -= 20;                                                //Score Goes Down 10 points
+                $("#gameScorePoints").text("Your Score: " + score);
+                
+                if (userGuess == []){                                       //if user did not select an answer
+                    numberOrder.splice(0, 1);                               //remove current question
+                    wrongGuesses++;                                         //wrongGuesses + 1
+                    $("#submitRow").hide();
+                    $("#nextQuestionRow").show();   
+                    isRunning=false;                                        //set isRunning to false
+                    console.log("false. wrong guesses: " + wrongGuesses);   
+                }
+                //if user selected an answer
+                else{
+                    $("#submitRow").hide();
+                    $("#nextQuestionRow").show();
+                    //if user's selected, but not submitted answer is correct                                                       
+                    if (userGuess == questionsArray[i].correctAnswer){      
+                        correctGuesses++;                                   //correctGuesses + 1
+                        numberOrder.splice(0, 1);                           //remove current question
+                        score +=20;                                         //Score goes up 20 points
+                        $("#gameScorePoints").text("Your Score: " + score);
+                        isRunning=false;                                    //set isRunning to false
+                        console.log("true");
+                    }
     
-
-    
-    
-    //start Interval Timer
-    timer = setInterval(function(){                                     //set interval timer for 1000ms
-        guessTime--;                                                    //countdown from 30 seconds
-        $("#timer").text(guessTime + " Seconds Remaining ");            //display countdown timer
-        console.log(guessTime);                                         
-        if (guessTime <= 0){                                            //if you run out of time
-            clearInterval(timer);                                       //clear the interval timer
-            $("#timer").text("Sorry, you ran out of Time!");            //display "Out of Time"
-            if (userGuess != []){                                       
-                numberOrder.splice(0, 1);
-                wrongGuesses++;
-                isRunning=false;
-                console.log("false. wrong guesses: " + wrongGuesses);
-                endGame();}
-            else{
-                numberOrder.splice(0, 1);
-                wrongGuesses++;
-                isRunning=false;
-                console.log("false. wrong guesses: " + wrongGuesses);
-                endGame();
-            }
-        };
+                    //if user's selected, but not submitted answer is incorrect
+                    else{
+                        wrongGuesses++;                                     //wrongGuesses + 1
+                        numberOrder.splice(0, 1);                           //remove current question
+                        isRunning=false;                                    //set is runing to false
+                        console.log("false");
+                    }
+                }
+            };
         }, 1000);
+        
+        //display questions and answer choices on screen
+        $("#question").text(questionsArray[i].question);                    //display Question on screen
+        $("#choice1").text(questionsArray[i].possAnswer1);                  //display possAnswer1 on screen
+        $("#choice2").text(questionsArray[i].possAnswer2);                  //display possAnswer2 on screen
+        $("#choice3").text(questionsArray[i].possAnswer3);                  //display possAnswer3 on screen
+        $("#choice4").text(questionsArray[i].possAnswer4);                  //display possAnswer4 on screen
+        
+        //////////////////
+        //Click Handlers//
+        //////////////////
 
-    //display questions and answer choices on screen
-    $("#question").text(questionsArray[i].question);
-    $("#choice1").html(questionsArray[i].possAnswer1);
-    $("#choice2").text(questionsArray[i].possAnswer2);
-    $("#choice3").text(questionsArray[i].possAnswer3);
-    $("#choice4").text(questionsArray[i].possAnswer4);
-    
-    
-    //Click Handlers splice selected answer to userGuess[]
-    $("#choice1").click (function(){
-        $("#submitRow").show();
-        buttonColor();
-        $(this).addClass("bg-secondary text-white");
-        userGuess.splice(0, 1, questionsArray[i].possAnswer1);
-    });
-    $("#choice2").click (function(){
-        $("#submitRow").show();
-        buttonColor();
-        $(this).addClass("bg-secondary text-white");
-        userGuess.splice(0, 1, questionsArray[i].possAnswer2);
-    });
-    $("#choice3").click (function(){
-        $("#submitRow").show();
-        buttonColor();
-        $(this).addClass("bg-secondary text-white");
-        userGuess.splice(0, 1, questionsArray[i].possAnswer3);
-    }); 
-    $("#choice4").click (function(){
-        $("#submitRow").show();
-        buttonColor();
-        $(this).addClass("bg-secondary text-white");
-        userGuess.splice(0, 1, questionsArray[i].possAnswer4);
-    });
-    
-    //Submit Answer Button
-    $("#submit").click(function(){
-        if (isRunning == true){
-            $("#submitRow").hide();
-            $("#nextQuestionRow").show();
-            clearInterval(timer);
-            if (userGuess == questionsArray[i].correctAnswer){
-                $("#funFact").show();
-                $("#funFact").text(questionsArray[i].funFact);
-                numberOrder.splice(0, 1);
-                isRunning=false;
-                correctGuesses++;
-                console.log("You are correct. CorrectGuesses: " + correctGuesses);
-                endGame();
-            }
-            else if (userGuess != []){
-                numberOrder.splice(0, 1);
-                wrongGuesses++;
-                isRunning=false;
-                console.log("false. wrong guesses: " + wrongGuesses);
-                endGame();
-            }
-            else{
-                numberOrder.splice(0, 1);
-                wrongGuesses++;
-                isRunning=false;
-                console.log("false. wrong guesses: " + wrongGuesses);
-                endGame();
-            }
-        }
-    });
+        //Choice 1
+        $("#choice1").click (function(){
+            $("#submitRow").show();                                         //show Submit Button
+            buttonColor();                                                  //reset all button color classes
+            $(this).addClass("bg-secondary text-white");                    //change this button color class to grey and white
+            userGuess.splice(0, 1, questionsArray[i].possAnswer1);          //splice the selected answer to userGuess
+        });
+        //Choice 2
+        $("#choice2").click (function(){                                    
+            $("#submitRow").show();                                         //show Submit Button
+            buttonColor();                                                  //reset all button color classes
+            $(this).addClass("bg-secondary text-white");                    //change this button color class to grey and white
+            userGuess.splice(0, 1, questionsArray[i].possAnswer2);          //splice the selected answer to userGuess
+        });
+        //Choice 3
+        $("#choice3").click (function(){
+            $("#submitRow").show();                                         //show Submit Button
+            buttonColor();                                                  //reset all button color classes
+            $(this).addClass("bg-secondary text-white");                    //change this button color class to grey and white
+            userGuess.splice(0, 1, questionsArray[i].possAnswer3);          //splice the selected answer to userGuess
+        }); 
+        //Choice 4
+        $("#choice4").click (function(){
+            $("#submitRow").show();                                         //show Submit Button
+            buttonColor();                                                  //reset all button color classes
+            $(this).addClass("bg-secondary text-white");                    //change this button color class to grey and white
+            userGuess.splice(0, 1, questionsArray[i].possAnswer4);          //splice the selected answer to userGuess
+        });
+        
+        //Submit Answer Button
+        //only shown after an answer has been selected
+        $("#submit").click(function(){  
 
-    //next Question Button
-    $("#nextQuestion").click(function(){
-        if(isRunning == false && questionsArray[i] != undefined){
-            $("#submitRow").hide();
-            $("#funFact").hide();
-            runGame();
-        }   
-    });
-    $("#results").click(function(){
-        if(isRunning == false && questionsArray[i] == undefined){
-            alert("Correct answers= " + correctGuesses + " wrong Guesses= " + wrongGuesses);
-        }   
-    });
+            if (isRunning == true){                                         //if isRunning is true(makes sure button can only run function on first click)
+                $("#submitRow").hide();                                     //hide submit button
+                $("#nextQuestionRow").show();                               //show next question button
+                clearInterval(timer);                                       //stop the interval timer countdown
+                isRunning=false;                                            //set isRunning to false
+                $("#funFact").show();                                       //show funFact row
+                $("#funFact").text("Correct," + "\n" +questionsArray[i].funFact);              //display a fun fact or explanation about the answer
+    
+                if (userGuess == questionsArray[i].correctAnswer){          //if the userGuess is correct
+                    $("#funFact").text("Correct," + "\n" +questionsArray[i].funFact);              //display a fun fact or explanation about the answer
+                    numberOrder.splice(0, 1);                               //remove index[0] from number order
+                    score += (guessTime + 20);                              //Score goes up by remaining guess time and 20 points
+                    
+                    $("#gameScorePoints").text("Your Score: " + score);
+                    correctGuesses++;                                       //correctGuesses + 1
+                    $("#gameScoreAnswers").text("You got " +correctGuesses + " / " + questionsArray.length + " questions correct!")
+                
+                }                                     
+                
+                else {                                                      //if the userGuess is wrong
+                    $("#funFact").text("False," + "\n" +questionsArray[i].funFact);              //display a fun fact or explanation about the answer
+                    numberOrder.splice(0, 1);                               //remove index[0] from number order
+                    score -= 5;
+                    $("#gameScorePoints").text("Your Score: " + score);
+                    wrongGuesses++;}                                        //wrongGuesses + 1
+            }
+        });
+        
+        //Next Question Button
+        //only shown after submit has been clicked or time has run out
+        $("#nextQuestion").click(function(){                    
+            if(isRunning == false && questionsArray[i] != undefined){       //If isRunning is false And there are still more questions
+                $("#submitRow").hide();                                     //hide submit row
+                $("#funFact").hide();                                       //hide fun facts
+                runGame();                                                  //run next question
+            }   
+        });
+    }
+    //if all questions have been answered
+    else {  
+        $("#resultsCard").show()                                             //show results card
+        $("#timer").hide();
+        $("#mainCard").hide();
+        if(score >= 600){
+            $("#grade").html("<h1 class='indie text-success'>You are a true Nfl Expert!</h1>");
+            $("#gameScorePoints").html("<h1 class='indie text-success'>"+ score +"</h1>");
+        };
+        if(score >= 300 && score < 600){
+            $("#grade").html("<h1 class='indie text-warning'>You might be a true Nfl Expert!</h1>");
+            $("#gameScorePoints").html("<h1 class='indie text-warning'>"+ score +"</h1>")
+        };
+        if(score < 300){
+            $("#grade").html("<h1 class='indie text-danger'>You are not a true Nfl Expert!</h1>");
+            $("#gameScorePoints").html("<h1 class='indie text-danger'>"+ score +"</h1>")
+        };
+    };
+};
 
-}
-runGame();
+//Initial Display Parameters
+
+$("#timer").hide();                                                             //hide timer
+$("#mainCard").hide();                                                          //hide questions card
+$("#resultsCard").hide();                                                       //hide results card
+
+//Click Handlers
+
+//Start Game Button
+$("#startGame").click(function(){
+    $("#timer").show();
+    $("#mainCard").show();
+    $("#resultsCard").hide();
+    $("#startGameCard").hide();
+    questionOrder();
+    runGame();
+});
+
+$("#tryAgainBtn").click(function(){
+    $("#timer").show();
+    $("#mainCard").show();
+    $("#resultsCard").hide();
+    score=0;
+    correctGuesses=0;                                                          
+    wrongGuesses=0;
+    questionOrder();
+    runGame();
+});
+
