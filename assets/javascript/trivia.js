@@ -23,13 +23,13 @@ var q3 = {question: "Which NFL team has the most Super Bowl Wins?",
     correctAnswer:"The Pittsburg Steelers",
     funFact: "The Pittsburg Steelers have won 8 Super Bowl Titles."
     };
-var q4 = {question: "Which state has the most Super Bowl appearances?",
-    possAnswer1:"NY",
-    possAnswer2:"Cal",
-    possAnswer3:"Florida",
-    possAnswer4:"Iowa",
-    correctAnswer:"Iowa",
-    funFact:"This is totally not true."};
+var q4 = {question: "Which state has the most collective Super Bowl wins?",
+    possAnswer1:"Massachussets",
+    possAnswer2:"California",
+    possAnswer3:"New York",
+    possAnswer4:"Pennsylvania",
+    correctAnswer:"California",
+    funFact:"The 49ers and Raiders have won a collective 8 Super Bowls. The Chargers and Rams have never won a SuperBowl in California."};
 var q5 = {question: "What year were players first required to wear helmets?",
     possAnswer1:"1935",
     possAnswer2:"1943",
@@ -86,20 +86,20 @@ var q12 = {question: "Who was the oldest coach to win a Super Bowl?",
     possAnswer4:"Bill Belichick",
     correctAnswer:"Tom Coughlin",
     funFact: "In 2012, at age 65, Tom Coughlin's NY Giants defeated Bill Belichick's New England Patriots."};
-var q13 = {question: "Which NFL kicker holds the record for longest successful field goal",
+var q13 = {question: "Which NFL kicker holds the record for longest successful field goal?",
     possAnswer1:"Sebastion Janikowski",
     possAnswer2:"David Akers",
     possAnswer3:"Mat Prater",
     possAnswer4:"Tom Demsey",
     correctAnswer:"Mat Prater",
     funFact: "On December 8, 2013, Mat Prater kicked a 64 yard field goal in Denver's Mile High Stadium."};
-var q14 = {question: "Do you like football",
-    possAnswer1:"Yes",
-    possAnswer2:"No",
-    possAnswer3:"Hell Yes",
-    possAnswer4:"Hell No",
-    correctAnswer:"Yes",
-    funFact: "You like football."};
+var q14 = {question: "Which Coach holds the record for most career wins?",
+    possAnswer1:"George Halas",
+    possAnswer2:"Tom Landry",
+    possAnswer3:"Bill Belichick",
+    possAnswer4:"Don Shula",
+    correctAnswer:"Don Shula",
+    funFact: "Over his 32 year NFL coaching career with the Baltimore Colts and the Miami Dolphins, Don Shula won 348 game.s"};
 var q15 = {question: "Which former NFL quarterback holds the record for most career fumbles?",
     possAnswer1:"Dave Krieg",
     possAnswer2:"Warren Moon",
@@ -108,11 +108,18 @@ var q15 = {question: "Which former NFL quarterback holds the record for most car
     correctAnswer:"Warren Moon",
     funFact: "During his 16 year NFL career, Warren Moon fumbled 161 times."
 };
+var q16 = {question: "Which team has the most Super Bowl appearances?",
+    possAnswer1:"The Dallas Cowboys",
+    possAnswer2:"The Pittsburg Steelers",
+    possAnswer3:"The Denver Broncos",
+    possAnswer4:"The New England Patriots",
+    correctAnswer:"The New England Patriots",
+    funFact:"The New England Patriots have been to 10 Super Bowls.  Of those, all 5 of their wins were during the Tom Brady/Bill Belichick era."};
 
 //global variables
 
 var questionsArray =                                                            //create an array of all the questions obects
-[q1, q2, q3, q4, q5, q6, q7, q8, q9, q10, q11, q12, q13, q14, q15];             //
+[q1, q2, q3, q4, q5, q6, q7, q8, q9, q10, q11, q12, q13, q14, q15, q16];             //
 var numberOrder=[];                                                             //The order of indexes of questionsArray that the questions will appear
 var userGuess=[];                                                               //user guess
 var correctGuesses=0;                                                           //number of correct guesses
@@ -296,15 +303,19 @@ function runGame(){
         $("#timer").hide();
         $("#mainCard").hide();
         if(score >= 600){
-            $("#grade").html("<h1 class='indie text-success'>You are a true Nfl Expert!</h1>");
+            $("#grade").html("<h1 class='indie text-success'>You scored 'Expert!'</h1>");
             $("#gameScorePoints").html("<h1 class='indie text-success'>"+ score +"</h1>");
         };
-        if(score >= 300 && score < 600){
-            $("#grade").html("<h1 class='indie text-warning'>You might be a true Nfl Expert!</h1>");
+        if(score >= 450 && score < 600){
+            $("#grade").html("<h1 class='indie text-success'>You scored 'Advanced'</h1>");
             $("#gameScorePoints").html("<h1 class='indie text-warning'>"+ score +"</h1>")
         };
-        if(score < 300){
-            $("#grade").html("<h1 class='indie text-danger'>You are not a true Nfl Expert!</h1>");
+        if(score >= 250 && score < 450){
+            $("#grade").html("<h1 class='indie text-warning'>You Scored 'Novice'</h1>");
+            $("#gameScorePoints").html("<h1 class='indie text-warning'>"+ score +"</h1>")
+        };
+        if(score < 250){
+            $("#grade").html("<h1 class='indie text-danger'>You scored 'Beginner'</h1>");
             $("#gameScorePoints").html("<h1 class='indie text-danger'>"+ score +"</h1>")
         };
     };

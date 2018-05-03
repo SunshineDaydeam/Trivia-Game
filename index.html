@@ -10,17 +10,20 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Bitter" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Pangolin" rel="stylesheet">
     <style>
-        .card { border-radius: 0px;}
         .bitter{font-family: 'Bitter', serif;}
+        .pangolin{font-family: 'Pangolin', cursive;}
+        body{background-image: url("assets/images/nfl-football-field-background-widescreen-2.jpg")}
+        .nflGreen{color: #4f682d;}
     </style>
     
     
 </head>
 <body>
 
-<nav class="p-3  mb-3 text-center bg-dark text-white bitter">
-    <h1>NFL TRIVIA QUIZ</h1>
+<nav class="p-3  mb-3 text-center bg-dark bitter">
+    <h1 class="text-white">NFL TRIVIA QUIZ</h1>
 </nav>
 
 
@@ -47,22 +50,22 @@
         <div class="row">
             <div class="col-sm-12 mb-0 p-3">
                 
-                    <h4 class="text-center text-white bitter" id="question">This is the question...</h4>
-                    <p class = "indie text-center" id="funFact"></p>
+                    <h4 class="text-center text-white pangolin" id="question">This is the question...</h4>
+                    <p class = "pangolin text-center" id="funFact"></p>
             </div>
         </div>
         <div class="row">
             <div class="col-sm-6">
-                <div class="card text-center p-3 mt-3" id="choice1">answer1</div>
+                <div class="card text-center p-3 mt-3 pangolin" id="choice1">answer1</div>
             </div>
             <div class="col-sm-6">
-                <div class="card text-center p-3 mt-3" id="choice2">answer2</div>
+                <div class="card text-center p-3 mt-3 pangolin" id="choice2">answer2</div>
             </div>
             <div class="col-sm-6">
-                <div class="card text-center p-3 mt-3 " id="choice3">answer3</div>
+                <div class="card text-center p-3 mt-3 pangolin " id="choice3">answer3</div>
             </div>
             <div class="col-sm-6">
-                <div class="card text-center p-3 mt-3" id="choice4">answer4</div>
+                <div class="card text-center p-3 mt-3 pangolin" id="choice4">answer4</div>
             </div>
         </div>
         <div class="row mt-3" id="submitRow">

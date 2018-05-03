@@ -314,12 +314,12 @@ $("#startGame").click(function(){
         $("#timer").hide();
         $("#mainCard").hide();
         if(score >= 600){
-            $("#grade").text("You are a true Nfl Expert!");
+            $("#grade").text("You are a true NFL Expert!");
         };
-        if(score >= 300 && score < 600){
+        if(score >= 250 && score < 600){
             $("#grade").text("You are an average Nfl fan.");
         };
-        if(score < 300){
+        if(score < 250){
             $("#grade").text("You are a totally casual fan.");
         };
     };  
