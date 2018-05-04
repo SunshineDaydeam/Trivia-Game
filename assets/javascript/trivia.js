@@ -363,6 +363,7 @@ $("#startGame").click(function(){
     $("#mainCard").show();
     $("#resultsCard").hide();
     $("#startGameCard").hide();
+    $("#headerBar").hide();
     questionOrder();
     runGame();
 });
