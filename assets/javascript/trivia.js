@@ -21,7 +21,7 @@ var q3 = {question: "Which NFL team has the most Super Bowl Wins?",
     possAnswer3:"The Dallas Cowboys",
     possAnswer4:"The Miami Dolphins",
     correctAnswer:"The Pittsburg Steelers",
-    funFact: "The Pittsburg Steelers have won 8 Super Bowl Titles."
+    funFact: "The Pittsburg Steelers have won 6 Super Bowl Titles."
     };
 var q4 = {question: "Which state has the most collective Super Bowl wins?",
     possAnswer1:"Massachussets",
@@ -99,7 +99,7 @@ var q14 = {question: "Which Coach holds the record for most career wins?",
     possAnswer3:"Bill Belichick",
     possAnswer4:"Don Shula",
     correctAnswer:"Don Shula",
-    funFact: "Over his 32 year NFL coaching career with the Baltimore Colts and the Miami Dolphins, Don Shula won 348 game.s"};
+    funFact: "Over his 32 year NFL coaching career with the Baltimore Colts and the Miami Dolphins, Don Shula won 348 games."};
 var q15 = {question: "Which former NFL quarterback holds the record for most career fumbles?",
     possAnswer1:"Dave Krieg",
     possAnswer2:"Warren Moon",
@@ -116,10 +116,38 @@ var q16 = {question: "Which team has the most Super Bowl appearances?",
     correctAnswer:"The New England Patriots",
     funFact:"The New England Patriots have been to 10 Super Bowls.  Of those, all 5 of their wins were during the Tom Brady/Bill Belichick era."};
 
-//global variables
+var q17 = {question: "Who was crowned Super Bowl MVP in the very first Super Bowl?",
+    possAnswer1:"Ray Nitschke",
+    possAnswer2:"Jerry Kramer",
+    possAnswer3:"Jim Taylor",
+    possAnswer4:"Bart Starr",
+    correctAnswer:"Bart Starr",
+    funFact: "Packers Quarterback Bart Starr was named MVP of SuperBowl I, in which the Green Bay Packers defeated the Kansas City Chiefs, 35-21."};
+var q18 = {question: "Only once in the history of the Super Bowl has player on the losing team been awarded the title of SuperBowl MVP.  What was that player's position?",
+    possAnswer1:"Linebacker",
+    possAnswer2:"Running Back",
+    possAnswer3:"QuarterBack",
+    possAnswer4:"Defensive End",
+    correctAnswer:"Linebacker",
+    funFact: "Chuck Howley, former linebacker for the Dallas Cowboys, was awarded Super Bowl MVP despite the Cowboys losing to the Baltimore Colts 16-13."};
+var q19 = {question: "Which of these NFL players has never won the Associated Press NFL MVP? Award?",
+    possAnswer1:"Shaun Alexander",
+    possAnswer2:"Eli Manning",
+    possAnswer3:"Cam Newton",
+    possAnswer4:"Adrian Peterson",
+    correctAnswer:"Eli Manning",
+    funFact: "Eli Manning has never won this award.  His brother Peyton has won 4."};
+var q20 = {question: "Which of these team mascots are incorrect.",
+    possAnswer1:"Cincinatti Bengals - 'Who Dey'",
+    possAnswer2:"New Orleans Saints - 'Gumbo'",
+    possAnswer3:"Carolina Panthers - 'Sir Purr'",
+    possAnswer4:"New York Giants - 'Tall Sam'",
+    correctAnswer:"New York Giants - 'Tall Sam'",
+    funFact: "The New York Giants do not actually have an official mascot."};
+    //global variables
 
 var questionsArray =                                                            //create an array of all the questions obects
-[q1, q2, q3, q4, q5, q6, q7, q8, q9, q10, q11, q12, q13, q14, q15, q16];             //
+[q1, q2, q3, q4, q5, q6, q7, q8, q9, q10, q11, q12, q13, q14, q15, q16, q17, q18, q19, q20];             //
 var numberOrder=[];                                                             //The order of indexes of questionsArray that the questions will appear
 var userGuess=[];                                                               //user guess
 var correctGuesses=0;                                                           //number of correct guesses
@@ -146,10 +174,10 @@ function questionOrder(){
     }
 }
 function buttonColor(){
-    $("#choice1").removeClass("bg-secondary text-white");       //remove button classes
-    $("#choice2").removeClass("bg-secondary text-white");       //remove button classes
-    $("#choice3").removeClass("bg-secondary text-white");       //remove button classes
-    $("#choice4").removeClass("bg-secondary text-white");       //remove button classes
+    $("#choice1").removeClass("bg-nflGreen text-white");       //remove button classes
+    $("#choice2").removeClass("bg-nflGreen text-white");       //remove button classes
+    $("#choice3").removeClass("bg-nflGreen text-white");       //remove button classes
+    $("#choice4").removeClass("bg-nflGreen text-white");       //remove button classes
 }
 //Game Main Function
 function runGame(){
@@ -230,28 +258,28 @@ function runGame(){
         $("#choice1").click (function(){
             $("#submitRow").show();                                         //show Submit Button
             buttonColor();                                                  //reset all button color classes
-            $(this).addClass("bg-secondary text-white");                    //change this button color class to grey and white
+            $(this).addClass("bg-nflGreen text-white");                    //change this button color class to grey and white
             userGuess.splice(0, 1, questionsArray[i].possAnswer1);          //splice the selected answer to userGuess
         });
         //Choice 2
         $("#choice2").click (function(){                                    
             $("#submitRow").show();                                         //show Submit Button
             buttonColor();                                                  //reset all button color classes
-            $(this).addClass("bg-secondary text-white");                    //change this button color class to grey and white
+            $(this).addClass("bg-nflGreen text-white");                    //change this button color class to grey and white
             userGuess.splice(0, 1, questionsArray[i].possAnswer2);          //splice the selected answer to userGuess
         });
         //Choice 3
         $("#choice3").click (function(){
             $("#submitRow").show();                                         //show Submit Button
             buttonColor();                                                  //reset all button color classes
-            $(this).addClass("bg-secondary text-white");                    //change this button color class to grey and white
+            $(this).addClass("bg-nflGreen text-white");                    //change this button color class to grey and white
             userGuess.splice(0, 1, questionsArray[i].possAnswer3);          //splice the selected answer to userGuess
         }); 
         //Choice 4
         $("#choice4").click (function(){
             $("#submitRow").show();                                         //show Submit Button
             buttonColor();                                                  //reset all button color classes
-            $(this).addClass("bg-secondary text-white");                    //change this button color class to grey and white
+            $(this).addClass("bg-nflGreen text-white");                    //change this button color class to grey and white
             userGuess.splice(0, 1, questionsArray[i].possAnswer4);          //splice the selected answer to userGuess
         });
         
