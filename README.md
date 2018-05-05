@@ -5,11 +5,7 @@ By Alex Bruner
 
 How To Play
 
-1.For each question, you have 30 seconds to select 1 of the four possible answers and click submit.
-2.If you fail to choose an answer in the given time, you will get the answer wrong.
-3.If you choose the incorrect answer, but fail to click submit before the time runs out, it will count as a wrong answer.
-4.If you choose the correct answer, but fail to click submit before the time runs out, it will count as the correct answer.
-5.After you have answered all 20 questions, you will be shown your total score.
+For each question, you have 30 seconds to select 1 of the four possible answers and click submit. If you fail to choose an answer in the given time, you will get the answer wrong. If you choose the incorrect answer, but fail to click submit before the time runs out, it will count as a wrong answer. If you choose the correct answer, but fail to click submit before the time runs out, it will count as the correct answer. After you have answered all 20 questions, you will be shown your total score.
 
 Scoring
 
