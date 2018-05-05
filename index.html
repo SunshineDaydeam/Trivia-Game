@@ -19,8 +19,8 @@
         .bg-nflGreen{background-color: #4f682d;}
         a:link {text-decoration: none;color:black}
         a:visited {text-decoration: none;color:black}
-        a:hover {text-decoration: none;color:black}
-        a:active {text-decoration: none;color:black}
+        a:hover {text-decoration: none;color:blue}
+        a:active {text-decoration: none;color:red}
     </style>
     
     
@@ -31,7 +31,7 @@
     <h1 class="text-white display-4" ><span class="text-danger">NFL</span> TRIVIA <span class="text-primary">QUIZ</span></h1>
 </nav>
 <nav>
-    <div class="text-center bg-secondary text-dark mt-0 mb-3  p-2 border-bottom border-dark">
+    <div class="text-center bg-secondary text-dark mt-0 mb-3 bitter p-2 border-bottom border-dark">
         <span>
             <a href="https://sunshinedaydeam.github.io/Bootstrap-Portfolio/index.html">About Me &nbsp |</a>
             <a href="https://sunshinedaydeam.github.io/Bootstrap-Portfolio/portfolio-redesign.html">&nbsp More Games &nbsp |</a>
@@ -99,29 +99,29 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="card p-3 text-center">
-                    <div id="giphy"></div>
-                    <h1 class = "text-center pangolin" id="grade">Your Score:</h1>
-                    <h4 id="gameScoreAnswers">0/15</h4>
+                    <p class="pangolin">Your rank:</p>
+                    <h1 class = "text-center pangolin" id="grade"></h1>
+                    <h4 id="gameScoreAnswers"></h4>
                     <h4 class="mb-3">You scored <span class = " font-weight-bold" id="gameScorePoints"></span> out of a possible 1000 points!</h4>
 
-                    <button class="bg-success text-white p-3" id="tryAgainBtn">Try Again</button>
+                    <button class="bg-success text-white p-3" id="tryAgainBtn">Play Again</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class = "row">
+    <div class = "row" id="otherGamesLink">
         <div class = "col-sm-12 pt-3 pr-3">
-            <div class="card bg-secondary">
+            <div class="card bg-light">
                 <div class="row">
                     <div class="col-md-12">
-                        <h3 class="m-3 pb-3 text-center pangolin"> Try My Other Games...</h3>
+                        <h1 class="m-3 pb-3 text-center pangolin"> Try My Other Games...</h1>
                     </div>
                 </div>
                 <div class="row p-3">
                     <div class="col-md-4">
                         <div class="card text-center">
-                            <a href = "https://sunshinedaydeam.github.io/Responsive-Portfolio/index.html" target="_blank">
+                            <a href = "https://sunshinedaydeam.github.io/Bunny-Wars-RPG/" target="_blank">
                                 <p class ="bitter mb-0">Bunny Wars</p>
                                 <img src="assets/images/BunnyWars.png" width="180px" height="150px">
                             </a>
@@ -129,7 +129,7 @@
                     </div>
                     <div class="col-md-4">
                         <div class="card text-center">
-                            <a href = "https://www.linkedin.com/in/alex-bruner-366348155/" target="_blank">
+                            <a href = "https://sunshinedaydeam.github.io/Crystal-Collector/index.html" target="_blank">
                                 <p class ="bitter mb-0">Crystal Collector</p>
                                 <img src="assets/images/CrystalCollector.png" width="180px" height="150px">
                             </a>
@@ -137,7 +137,7 @@
                     </div>
                     <div class="col-md-4">
                         <div class="card text-center">
-                            <a href = "https://stackoverflow.com/users/9510977/alex-bruner" target="_blank">
+                            <a href = "https://sunshinedaydeam.github.io/Word_Guess_Game/index.html" target="_blank">
                                 <p class ="bitter mb-0">Hangman</p>
                                 <img src="assets/images/Hangman.png" width="180px"  height="150px">
                             </a>
@@ -149,10 +149,7 @@
     </div>
 </div>
 
-<footer class="pt-2 pb-1 bg-dark text-center">
-    <p class="text-muted mb-0 pt-3 bitter">Coded By Alex Bruner</p>
-    <p class="text-muted bitter ">Copyright 2018</p>
-</footer>
+
     <script src="assets/javascript/trivia.js"></script>
 
 </body>

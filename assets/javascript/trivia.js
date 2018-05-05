@@ -133,7 +133,7 @@ var questionsArray = [
     possAnswer3:"QuarterBack",
     possAnswer4:"Defensive End",
     correctAnswer:"Linebacker",
-    funFact: "Chuck Howley, former linebacker for the Dallas Cowboys, was awarded Super Bowl MVP despite the Cowboys losing to the Baltimore Colts 16-13."},
+    funFact: "Chuck Howley, former linebacker for the Dallas Cowboys, was named MVP of Super Bowl V despite the Cowboys losing to the Baltimore Colts 16-13."},
     q19 = {question: "Which of these NFL players has never won the Associated Press NFL MVP? Award?",
     possAnswer1:"Shaun Alexander",
     possAnswer2:"Eli Manning",
@@ -165,6 +165,7 @@ var score=0;                                                                    
 $("#timer").hide();                                                             //hide timer
 $("#mainCard").hide();                                                          //hide questions card
 $("#resultsCard").hide();                                                       //hide results card
+$("#otherGamesLink").hide();                                                    //hide otherGames Link View                                                      
 
 
                             ///////////////////////////////////////////////////////////////////////////
@@ -279,7 +280,7 @@ function runGame(){
             if (isRunning == true){
             $("#submitRow").show();                                         //show Submit Button
             buttonColor();                                                  //reset all button color classes
-            $(this).addClass("bg-info text-white");                     //change this button color class to grey and white
+            $(this).addClass("bg-info text-white");                         //change this button color class to grey and white
             userGuess.splice(0, 1, questionsArray[i].possAnswer1);          //splice the selected answer to userGuess
             };
         });
@@ -288,7 +289,7 @@ function runGame(){
             if (isRunning == true){
                 $("#submitRow").show();                                     //show Submit Button
                 buttonColor();                                              //reset all button color classes
-                $(this).addClass("bg-info text-white");                 //change this button color class to grey and white
+                $(this).addClass("bg-info text-white");                     //change this button color class to grey and white
                 userGuess.splice(0, 1, questionsArray[i].possAnswer2);      //splice the selected answer to userGuess
             };                                    
            
@@ -298,7 +299,7 @@ function runGame(){
             if (isRunning == true){
                 $("#submitRow").show();                                     //show Submit Button
                 buttonColor();                                              //reset all button color classes
-                $(this).addClass("bg-info text-white");                 //change this button color class to grey and white
+                $(this).addClass("bg-info text-white");                     //change this button color class to grey and white
                 userGuess.splice(0, 1, questionsArray[i].possAnswer3);      //splice the selected answer to userGuess
             };
             
@@ -355,10 +356,11 @@ function runGame(){
     //if all questions have been answered
     else {  
         $("#resultsCard").show()                                            //show results card
+        $("#otherGamesLink").show();                                        //show otherGames Link View 
         $("#timer").hide();                                                 //hide timer
         $("#mainCard").hide();                                              //hide main card
-        $("#gameScoreAnswers").text("You correctly answered " + correctGuesses + " / " + questionsArray.length + " Answers!")
-        $("#gameScorePoints").text(score);
+        $("#gameScoreAnswers").text("You correctly answered " + correctGuesses + " / " + questionsArray.length + " questions!")
+        $("#gameScorePoints").text(score);                                  //show game score
 
         //Scores Above 600  - EXPERT
         if(score >= 600){
@@ -388,24 +390,25 @@ function runGame(){
                             ///////////////////////////////////////////////////////////////////////////
 
 //Start Game Button
-$("#startGame").click(function(){
-    $("#timer").show();
-    $("#mainCard").show();
-    $("#resultsCard").hide();
-    $("#startGameCard").hide();
-    questionOrder();
-    runGame();
+$("#startGame").click(function(){                                           //when user clicks start game
+    $("#timer").show();                                                     //show timer
+    $("#mainCard").show();                                                  //show main question/answer card
+    $("#resultsCard").hide();                                               //hide results card
+    $("#startGameCard").hide();                                             //hide start game card
+    questionOrder();                                                        //create a new random order for the questions
+    runGame();                                                              //run game
 });
 
 //Try Again Button
-$("#tryAgainBtn").click(function(){
-    $("#timer").show();
-    $("#mainCard").show();
-    $("#resultsCard").hide();
-    score=0;
-    correctGuesses=0;                                                          
-    wrongGuesses=0;
-    questionOrder();
-    runGame();
+$("#tryAgainBtn").click(function(){                                         //when user clicks try again
+    $("#timer").show();                                                     //show timer
+    $("#mainCard").show();                                                  //show main card
+    $("#resultsCard").hide();                                               //hide results card
+    $("#otherGamesLink").hide();                                            //hide otherGames Link View 
+    score=0;                                                                //reset user's score to 0
+    correctGuesses=0;                                                       //reset correct guesses to 0
+    wrongGuesses=0;                                                         //reset wrong guesses to 0
+    questionOrder();                                                        //create a new random order for the questions
+    runGame();                                                              //run game
 });
 
