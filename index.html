@@ -17,18 +17,31 @@
         body{background-image: url("assets/images/nfl-football-field-background-widescreen-2.jpg")}
         .nflGreen{color: #4f682d;}
         .bg-nflGreen{background-color: #4f682d;}
+        a:link {text-decoration: none;color:black}
+        a:visited {text-decoration: none;color:black}
+        a:hover {text-decoration: none;color:black}
+        a:active {text-decoration: none;color:black}
     </style>
     
     
 </head>
 <body>
 
-<nav class="p-2  mb-3 text-center bg-dark bitter" id="headerBar">
-    <h1 class="text-white">NFL TRIVIA QUIZ</h1>
+<nav class="p-2 text-center bg-dark bitter" id="headerBar">
+    <h1 class="text-white display-4" ><span class="text-danger">NFL</span> TRIVIA <span class="text-primary">QUIZ</span></h1>
+</nav>
+<nav>
+    <div class="text-center bg-secondary text-dark mt-0 mb-3  p-2 border-bottom border-dark">
+        <span>
+            <a href="https://sunshinedaydeam.github.io/Bootstrap-Portfolio/index.html">About Me &nbsp |</a>
+            <a href="https://sunshinedaydeam.github.io/Bootstrap-Portfolio/portfolio-redesign.html">&nbsp More Games &nbsp |</a>
+            <a href="https://sunshinedaydeam.github.io/Bootstrap-Portfolio/contact.html"> &nbsp Contact Me</a>
+        </span>
+    </div>
 </nav>
 
 
-<div class="container">
+<div class="container mt-5 mb-5">
 
     <div class="card mt-3 mb-3" id="startGameCard">
         <div class="row">
@@ -39,63 +52,107 @@
                     <p class="text-muted pangolin">If you fail to choose an answer in the given time, you will get the answer wrong.</p>
                     <p class="text-muted pangolin">If you choose the incorrect answer, but fail to click submit before the time runs out, it will count as a wrong answer.</p>
                     <p class="text-muted pangolin">If you choose the correct answer, but fail to click submit before the time runs out, it will count as the correct answer.</p>
-                    <p class="text-muted pangolin">After you have answered all 15 questions, you will be shown your total score.</p>
-                    <button class="bg-nflGreen text-white pangolin p-3" id="startGame"><h3>Start The Quiz</h3></button>
+                    <p class="text-muted pangolin">After you have answered all 20 questions, you will be shown your total score.</p>
+                    <button class="bg-success rounded text-white pangolin p-3" id="startGame"><h3>Start The Quiz</h3></button>
                 </div>
             </div>
         </div>
     </div>
 
     <h6 class="bg-success bg-dark text-white text-center p-2 mt-3 mb-0" id="timer" >30 Seconds Left</h6>
-    <div class="card p-2 bg-secondary" id="mainCard">
-        <div class="row">
+    <div class="card p-3 bg-light" id="mainCard">
+        <div class="row mt-3 p-3">
             <div class="col-sm-12 mb-0 p-3">
                 
-                    <h4 class="text-center text-white pangolin" id="question">This is the question...</h4>
-                    <p class = "pangolin text-center" id="funFact"></p>
+                    <h4 class="text-center text-muted pangolin mb-0" id="question">This is the question...</h4>
+                    <h4 class = "pangolin text-success text-center mt-2" id="funFactCorrect"></h4>
+                    <h4 class = "pangolin text-danger text-center mt-2" id="funFactFalse"></h4>
             </div>
         </div>
-        <div class="row">
+        <div class="row m-3">
             <div class="col-sm-6">
-                <div class="card text-center p-2 mt-1 pangolin" id="choice1">answer1</div>
+                <div class="card text-center p-3 mt-3 pangolin" id="choice1">answer1</div>
             </div>
             <div class="col-sm-6">
-                <div class="card text-center p-2 mt-1 pangolin" id="choice2">answer2</div>
+                <div class="card text-center p-3 mt-3 pangolin" id="choice2">answer2</div>
             </div>
             <div class="col-sm-6">
-                <div class="card text-center p-2 mt-1 pangolin " id="choice3">answer3</div>
+                <div class="card text-center p-3 mt-3 pangolin " id="choice3">answer3</div>
             </div>
             <div class="col-sm-6">
-                <div class="card text-center p-2 mt-1 pangolin" id="choice4">answer4</div>
+                <div class="card text-center p-3 mt-3 pangolin" id="choice4">answer4</div>
             </div>
         </div>
-        <div class="row mt-3" id="submitRow">
-            <div class="col-sm-12">
-                <div class="card"><button class="btn bg-success p-3" id="submit">Submit</button></div>
+        <div class="row m-3" id="submitRow">
+            <div class="col-sm-12 mt-0 mb-0">
+                <div class="card"><button class="btn bg-success p-3 text-white pangolin" id="submit"><h3>Submit Answer</h3></button></div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-sm-12 mt-3" id="nextQuestionRow">
-                <div class="card"><button class="btn bg-success p-3" id="nextQuestion">Next Question</button></div>
+        <div class="row m-3">
+            <div class="col-sm-12 mt-0 mb-3" id="nextQuestionRow">
+                <div class="card"><button class="btn bg-success p-3 text-white pangolin" id="nextQuestion"><h3>Next Question</h3></button></div>
             </div>
         </div>
     </div>
 
-    <div class="card mt-3 mb-3" id="resultsCard">
+    <div class="card mt-5 mb-3" id="resultsCard">
         <div class="row">
             <div class="col-sm-12">
                 <div class="card p-3 text-center">
                     <div id="giphy"></div>
-                    <div class = "text-center" id="grade">Your Score:</div>
-                    <div id="gameScoreAnswers">0/15</div>
-                    <h3>Your Score: <span id="gameScorePoints"></span></h3>
+                    <h1 class = "text-center pangolin" id="grade">Your Score:</h1>
+                    <h4 id="gameScoreAnswers">0/15</h4>
+                    <h4 class="mb-3">You scored <span class = " font-weight-bold" id="gameScorePoints"></span> out of a possible 1000 points!</h4>
 
                     <button class="bg-success text-white p-3" id="tryAgainBtn">Try Again</button>
                 </div>
             </div>
         </div>
     </div>
+
+    <div class = "row">
+        <div class = "col-sm-12 pt-3 pr-3">
+            <div class="card bg-secondary">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3 class="m-3 pb-3 text-center pangolin"> Try My Other Games...</h3>
+                    </div>
+                </div>
+                <div class="row p-3">
+                    <div class="col-md-4">
+                        <div class="card text-center">
+                            <a href = "https://sunshinedaydeam.github.io/Responsive-Portfolio/index.html" target="_blank">
+                                <p class ="bitter mb-0">Bunny Wars</p>
+                                <img src="assets/images/BunnyWars.png" width="180px" height="150px">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card text-center">
+                            <a href = "https://www.linkedin.com/in/alex-bruner-366348155/" target="_blank">
+                                <p class ="bitter mb-0">Crystal Collector</p>
+                                <img src="assets/images/CrystalCollector.png" width="180px" height="150px">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card text-center">
+                            <a href = "https://stackoverflow.com/users/9510977/alex-bruner" target="_blank">
+                                <p class ="bitter mb-0">Hangman</p>
+                                <img src="assets/images/Hangman.png" width="180px"  height="150px">
+                            </a>
+                        </div>
+                    </div>                        
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+<footer class="pt-2 pb-1 bg-dark text-center">
+    <p class="text-muted mb-0 pt-3 bitter">Coded By Alex Bruner</p>
+    <p class="text-muted bitter ">Copyright 2018</p>
+</footer>
     <script src="assets/javascript/trivia.js"></script>
 
 </body>
